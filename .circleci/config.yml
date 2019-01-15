@@ -18,8 +18,7 @@ jobs:
 
     steps:
       - checkout
-      - run: pwd
-      - run: ls -alrt
+      - run: cd ./test-project
       # Download and cache dependencies
       - restore_cache:
           keys:
