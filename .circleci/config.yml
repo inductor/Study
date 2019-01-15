@@ -18,17 +18,15 @@ jobs:
 
     steps:
       - checkout
-      - run: cd ./test-project && ls -alrt
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "./test-project/package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: ls -alrt
       - run: cd test-project && npm install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "./test-project/package.json" }}
